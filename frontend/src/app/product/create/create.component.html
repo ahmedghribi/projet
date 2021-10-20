@@ -1,0 +1,68 @@
+<div>
+
+    <div class="d-flex justify-content-between">
+        <h4>Form customer</h4>
+        <a href="#" routerLink="/product/index" class="btn btn-primaryt">Back</a>
+    </div>
+
+    <hr />
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+        <div class="form-group row">
+            <div class="col-md-6 ">
+                <label for="title">title:</label>
+                <input formControlName="title" id="title" type="text" class="form-control">
+                <div *ngIf="f.title.touched && f.title.invalid" class="alert alert-danger">
+                    <div *ngIf="f.title.errors?.required">*title is required.</div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-md-6 ">
+                <label for="description">description:</label>
+                <input formControlName="description" id="description" type="text" class="form-control">
+                <div *ngIf="f.description.touched && f.description.invalid" class="alert alert-danger">
+                    <div *ngIf="f.description.errors?.required">*description is required.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-6 ">
+                <label for="description">category_id:</label>
+                <input formControlName="category_id" id="category_id" type="text" class="form-control">
+                <div *ngIf="f.category_id.touched && f.category_id.invalid" class="alert alert-danger">
+                    <div *ngIf="f.category_id.errors?.required">*category_id is required.</div>
+                    <div *ngIf="f.category_id.errors?.pattern">*The name must only contain numbers.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-6 ">
+                <label for="description">image:</label>
+                <input formControlName="image" id="image" type="text" class="form-control">
+                <div *ngIf="f.image.touched && f.image.invalid" class="alert alert-danger">
+                    <div *ngIf="f.image.errors?.required">*image is required.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-6 ">
+                <label for="description">price:</label>
+                <input formControlName="price" id="price" type="text" class="form-control">
+                <div *ngIf="f.price.touched && f.price.invalid" class="alert alert-danger">
+                    <div *ngIf="f.price.errors?.required">*price is required.</div>
+                    <div *ngIf="f.price.errors?.pattern">*The name must only contain numbers.</div>
+
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="form.errors">Submit</button>
+    </form>
+</div>
