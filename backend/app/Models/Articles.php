@@ -13,7 +13,7 @@ class Articles extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'title', 'description', 'image', 'category_id', 'status', 'price'
+        'title', 'description', 'category_id', 'status', 'price'
     ];
 
     public function Category()

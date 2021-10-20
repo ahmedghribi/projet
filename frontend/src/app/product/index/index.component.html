@@ -29,6 +29,14 @@
       </tr>
     </table>
  </section> -->
+<nz-page-header class="site-page-header" nzBackIcon nzTitle="Product" nzSubtitle="Product list">
+  <nz-page-header-content>
+    <button nz-button nzType="primary" nzShape="round" [routerLink]="['/product/create']">
+      <i nz-icon nzType="plus"></i>
+      Add Product
+    </button>
+  </nz-page-header-content>
+</nz-page-header>
 
 <nz-table #nzTable [nzData]="listOfDisplayData" nzTableLayout="fixed">
   <thead>
@@ -42,7 +50,6 @@
       <th>description</th>
       <th>Category</th>
       <th>status</th>
-      <th>image</th>
       <th>price</th>
       <th width="220px">Action</th>
     </tr>
@@ -53,12 +60,25 @@
       <td>{{ data.description }}</td>
       <td>{{ data.category?.name }}</td>
       <td>{{ data.status }}</td>
-      <td>{{ data.image }}</td>
       <td>{{ data.price }}</td>
       <td>
         <nz-button-group>
-          <button nz-button nzType="primary" [routerLink]="['/product/', 'edit', data.id  ]"><i nz-icon nzType="edit"></i></button>
-          <button nz-button nzType="primary" nzDanger (click)="deleteProduct(data.id)"><i nz-icon nzType="delete"></i></button>
+          <!--   <button nz-button nzType="primary" [routerLink]="['/product/', 'edit', data.id  ]"><i nz-icon nzType="edit"></i></button>
+          <button nz-button nzType="primary" nzDanger (click)="deleteProduct(data.id)"><i nz-icon nzType="delete"></i></button> -->
+          <button nz-button nz-dropdown [nzDropdownMenu]="menu">
+            Actions
+            <i nz-icon nzType="down"></i>
+          </button>
+          <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+              <li nz-menu-item [routerLink]="['/product/', 'edit', data.id  ]">
+                <i nz-icon nzType="edit" nzTheme="outline" class="icon-action"></i> <span>Edit</span>
+              </li>
+              <li nz-menu-item (click)="deleteProduct(data.id)" class="delete-btn">
+                <i nz-icon nzType="delete" nzTheme="outline" class="icon-action"></i> <span>Delete</span>
+              </li>
+            </ul>
+          </nz-dropdown-menu>
         </nz-button-group>
       </td>
     </tr>

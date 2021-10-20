@@ -22,7 +22,6 @@ class ArticlesController extends Controller
             [
                 'title' => 'required',
                 'description' => 'required',
-                'image' => 'required',
                 'price' => 'required|numeric'
             ]
         );

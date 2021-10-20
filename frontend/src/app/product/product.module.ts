@@ -9,6 +9,9 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+
 @NgModule({
   declarations: [
     IndexComponent,
@@ -23,7 +26,9 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     NzTableModule,
     NzDropDownModule,
     NzButtonModule,
-    NzIconModule
+    NzIconModule,
+    NzPageHeaderModule,
+    NzModalModule
   ]
 })
 export class ProductModule { }

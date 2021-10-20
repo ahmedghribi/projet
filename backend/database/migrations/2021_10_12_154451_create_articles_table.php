@@ -20,7 +20,6 @@ class CreateArticlesTable extends Migration
             $table->bigInteger('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
             $table->boolean('status')->default(1);
-            $table->string('image');
             $table->decimal('price', 5, 2);
             $table->timestamps();
         });

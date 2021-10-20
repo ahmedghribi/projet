@@ -20,7 +20,6 @@ export class CreateComponent implements OnInit {
       title: new FormControl("", [Validators.required]),
       description: new FormControl("", [Validators.required]),
       category_id: new FormControl("", [Validators.required, Validators.pattern("^[0-9]*$") ]),
-      image: new FormControl("", [Validators.required]),
       price: new FormControl("", [Validators.required, Validators.pattern("^[0-9]*$")])
     });
     this.CategoryService.getAll().subscribe((data: Category[])=>{

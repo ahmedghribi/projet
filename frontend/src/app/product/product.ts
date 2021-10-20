@@ -4,6 +4,5 @@ export interface Product {
   description: string;
   category_id: number;
   status: boolean;
-  image: string;
   price: number;
 }

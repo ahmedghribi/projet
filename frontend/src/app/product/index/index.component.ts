@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ProductService } from "../product.service";
 import { Product } from "../product";
+import { NzModalRef, NzModalService } from "ng-zorro-antd/modal";
 
 @Component({
   selector: "app-index",
@@ -11,9 +12,13 @@ export class IndexComponent implements OnInit {
   listOfData: Product[] = [];
   searchValue = "";
   visible = false;
-  listOfDisplayData : any;
+  listOfDisplayData: any;
+  confirmModal?: NzModalRef;
 
-  constructor(public ProductService: ProductService) {}
+  constructor(
+    public ProductService: ProductService,
+    private modal: NzModalService
+  ) {}
 
   ngOnInit(): void {
     this.ProductService.getAll().subscribe((data: Product[]) => {
@@ -23,9 +28,13 @@ export class IndexComponent implements OnInit {
     });
   }
   deleteProduct(id: any) {
-    this.ProductService.delete(id).subscribe(res => {
-      this.listOfData = this.listOfData.filter(item => item.id !== id);
-      console.log("Person deleted successfully!");
+    this.confirmModal = this.modal.confirm({
+      nzTitle: "Do you Want to delete this product ?",
+      nzOnOk: () =>
+        this.ProductService.delete(id).subscribe(res => {
+          this.listOfData = this.listOfData.filter(item => item.id !== id);
+          console.log("Product deleted ");
+        })
     });
   }
   reset(): void {
