@@ -1,4 +1,4 @@
-<section>
+<!-- <section>
 
     <div class="d-flex justify-content-between">
       <h4>List product</h4>
@@ -28,4 +28,48 @@
         </td>
       </tr>
     </table>
- </section>
+ </section> -->
+
+<nz-table #nzTable [nzData]="listOfDisplayData" nzTableLayout="fixed">
+  <thead>
+    <tr>
+      <th nzCustomFilter>
+        title
+        <nz-filter-trigger [(nzVisible)]="visible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
+          <i nz-icon nzType="search"></i>
+        </nz-filter-trigger>
+      </th>
+      <th>description</th>
+      <th>Category</th>
+      <th>status</th>
+      <th>image</th>
+      <th>price</th>
+      <th width="220px">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of nzTable.data">
+      <td>{{ data.title }}</td>
+      <td>{{ data.description }}</td>
+      <td>{{ data.category?.name }}</td>
+      <td>{{ data.status }}</td>
+      <td>{{ data.image }}</td>
+      <td>{{ data.price }}</td>
+      <td>
+        <nz-button-group>
+          <button nz-button nzType="primary" [routerLink]="['/product/', 'edit', data.id  ]"><i nz-icon nzType="edit"></i></button>
+          <button nz-button nzType="primary" nzDanger (click)="deleteProduct(data.id)"><i nz-icon nzType="delete"></i></button>
+        </nz-button-group>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <div class="ant-table-filter-dropdown">
+    <div class="search-box">
+      <input type="text" nz-input placeholder="Search name" [(ngModel)]="searchValue" />
+      <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">Search</button>
+      <button nz-button nzSize="small" (click)="reset()">Reset</button>
+    </div>
+  </div>
+</nz-dropdown-menu>
