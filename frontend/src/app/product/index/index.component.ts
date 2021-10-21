@@ -9,6 +9,7 @@ import { NzModalRef, NzModalService } from "ng-zorro-antd/modal";
   styleUrls: ["./index.component.css"]
 })
 export class IndexComponent implements OnInit {
+  
   listOfData: Product[] = [];
   searchValue = "";
   visible = false;

@@ -1,1 +1,61 @@
-<p>edit works!</p>
+<div>
+
+    <nz-page-header class="site-page-header" nzBackIcon nzTitle="Product" nzSubtitle="Product edit">
+    </nz-page-header>
+
+
+
+    <form [formGroup]="form" (ngSubmit)="submit()" nz-form>
+
+        <nz-form-item>
+            <nz-form-label nzRequired nzFor="Title">Title</nz-form-label>
+            <input id="Title" type="text" nz-input formControlName="title"  [(ngModel)]="product.title" />
+            <div *ngIf="f.title.touched && f.title.invalid" class="alert alert-danger">
+                <div *ngIf="f.title.errors?.required"><nz-alert nzType="error" nzShowIcon nzMessage="Title is required."></nz-alert></div>
+            </div>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label nzRequired nzFor="Description">Description</nz-form-label>
+            <textarea formControlName="description" nz-input rows="2" [(ngModel)]="product.description"></textarea>
+            <div *ngIf="f.description.touched && f.description.invalid" class="alert alert-danger">
+                <div *ngIf="f.description.errors?.required">
+                    <nz-alert nzType="error" nzShowIcon nzMessage="Description is required."></nz-alert>
+                </div>
+            </div>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label nzRequired nzFor="Category">Category</nz-form-label>
+            <nz-select formControlName="category_id" nzPlaceHolder="Select a category" [(ngModel)]="product.category_id">
+                <nz-option *ngFor="let item  of Category" [nzLabel]="item.name" [nzValue]="item.id"></nz-option>
+              </nz-select>
+
+            <div *ngIf="f.category_id.touched && f.category_id.invalid" class="alert alert-danger">
+                <div *ngIf="f.category_id.errors?.required">
+                    <nz-alert nzType="error" nzShowIcon nzMessage="Category is required."></nz-alert>
+                </div>
+            </div>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label nzRequired nzFor="Price">Price</nz-form-label>
+            <nz-input-number formControlName="price" [nzMin]="1"  [nzStep]="1" [(ngModel)]="product.price"></nz-input-number>
+            <div *ngIf="f.price.touched && f.price.invalid" class="alert alert-danger">
+                <div *ngIf="f.price.errors?.required">
+                    <nz-alert nzType="error" nzShowIcon nzMessage="Price is required."></nz-alert>
+                </div>
+            </div>
+        </nz-form-item>
+
+
+        <nz-form-item>
+            <nz-form-control [nzSpan]="12" [nzOffset]="5">
+                <button nz-button nzType="primary" [disabled]="!form.valid">Submit</button>
+            </nz-form-control>
+        </nz-form-item>
+
+
+
+    </form>
+</div>

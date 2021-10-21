@@ -1,1 +1,57 @@
-<p>index works!</p>
+<nz-page-header class="site-page-header"  nzTitle="Category" nzSubtitle="Category list">
+    <nz-page-header-content>
+        <button nz-button nzType="primary" nzShape="round" [routerLink]="['/category/create']">
+            <i nz-icon nzType="plus"></i>
+            Add category
+        </button>
+    </nz-page-header-content>
+</nz-page-header>
+
+<nz-table #nzTable [nzData]="listOfDisplayData" nzTableLayout="fixed">
+    <thead>
+        <tr>
+            <th nzCustomFilter>
+                title
+                <nz-filter-trigger [(nzVisible)]="visible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
+                    <i nz-icon nzType="search"></i>
+                </nz-filter-trigger>
+            </th>
+            <th>description</th>
+            <th width="220px">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of nzTable.data">
+            <td>{{ data.name }}</td>
+            <td>{{ data.description }}</td>
+            <td>
+                <nz-button-group>
+                    <button nz-button nz-dropdown [nzDropdownMenu]="menu">
+                        Actions
+                        <i nz-icon nzType="down"></i>
+                    </button>
+                    <nz-dropdown-menu #menu="nzDropdownMenu">
+                        <ul nz-menu>
+                            <li nz-menu-item [routerLink]="['/category/', 'edit', data.id  ]">
+                                <i nz-icon nzType="edit" nzTheme="outline" class="icon-action"></i> <span>Edit</span>
+                            </li>
+                            <li nz-menu-item (click)="deleteCategory(data.id)" class="delete-btn">
+                                <i nz-icon nzType="delete" nzTheme="outline" class="icon-action"></i>
+                                <span>Delete</span>
+                            </li>
+                        </ul>
+                    </nz-dropdown-menu>
+                </nz-button-group>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>
+<nz-dropdown-menu #menu="nzDropdownMenu">
+    <div class="ant-table-filter-dropdown">
+        <div class="search-box">
+            <input type="text" nz-input placeholder="Search name" [(ngModel)]="searchValue" />
+            <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">Search</button>
+            <button nz-button nzSize="small" (click)="reset()">Reset</button>
+        </div>
+    </div>
+</nz-dropdown-menu>

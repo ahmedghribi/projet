@@ -40,7 +40,7 @@
 
         <nz-form-item>
             <nz-form-label nzRequired nzFor="Price">Price</nz-form-label>
-            <nz-input-number formControlName="price" [nzMin]="1" [nzMax]="10" [nzStep]="1"></nz-input-number>
+            <nz-input-number formControlName="price" [nzMin]="1"  [nzStep]="1"></nz-input-number>
             <div *ngIf="f.price.touched && f.price.invalid" class="alert alert-danger">
                 <div *ngIf="f.price.errors?.required">
                     <nz-alert nzType="error" nzShowIcon nzMessage="Price is required."></nz-alert>

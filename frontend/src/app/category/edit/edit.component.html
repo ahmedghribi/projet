@@ -1,1 +1,38 @@
-<p>edit works!</p>
+<div>
+
+    <nz-page-header class="site-page-header" nzBackIcon nzTitle="Category" nzSubtitle="category edit">
+    </nz-page-header>
+
+
+
+    <form [formGroup]="form" (ngSubmit)="submit()" nz-form>
+
+        <nz-form-item>
+            <nz-form-label nzRequired nzFor="Title">Title</nz-form-label>
+            <input id="name" type="text" nz-input formControlName="name"  [(ngModel)]="category.name" />
+            <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
+                <div *ngIf="f.name.errors?.required"><nz-alert nzType="error" nzShowIcon nzMessage="Title is required."></nz-alert></div>
+            </div>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label nzRequired nzFor="Description">Description</nz-form-label>
+            <textarea formControlName="description" nz-input rows="2" [(ngModel)]="category.description"></textarea>
+            <div *ngIf="f.description.touched && f.description.invalid" class="alert alert-danger">
+                <div *ngIf="f.description.errors?.required">
+                    <nz-alert nzType="error" nzShowIcon nzMessage="Description is required."></nz-alert>
+                </div>
+            </div>
+        </nz-form-item>
+
+
+        <nz-form-item>
+            <nz-form-control [nzSpan]="12" [nzOffset]="5">
+                <button nz-button nzType="primary" [disabled]="!form.valid">Submit</button>
+            </nz-form-control>
+        </nz-form-item>
+
+
+
+    </form>
+</div>
