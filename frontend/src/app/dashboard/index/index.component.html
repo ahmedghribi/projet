@@ -3,8 +3,25 @@
 </nz-page-header>
 
 <div nz-row>
-    <div nz-col nzSpan="12"><canvas baseChart chartType="pie" [data]="CategoryDatas" [colors]="chartColors"
-            [labels]="CategoryNames" [options]="chartOptions" [plugins]="chartPlugins" [legend]="chartLegend">
-        </canvas></div>
-    <div nz-col nzSpan="12">col-12</div>
+  <div nz-col nzSpan="12">
+    <div class="title">Statistics</div>
+    <nz-row [nzGutter]="16">
+      <nz-col [nzSpan]="12">
+        <nz-statistic [nzValue]="totalProduct" [nzTitle]="'Total Products'" [nzPrefix]="prefixPr" ></nz-statistic>
+        <ng-template #prefixPr><i nz-icon nzType="project"></i></ng-template>
+      </nz-col>
+      <nz-col [nzSpan]="12">
+        <nz-statistic [nzValue]="totalCategory" [nzTitle]="'Total Category'" [nzPrefix]="prefixCat"></nz-statistic>
+        <ng-template #prefixCat><i nz-icon nzType="apartment"></i></ng-template>
+      </nz-col>
+    </nz-row>
+
+  </div>
+
+  <div nz-col nzSpan="12">
+    <div class="title">Article in Category</div>
+    <canvas baseChart chartType="pie" [data]="CategoryDatas" [colors]="chartColors" [labels]="CategoryNames"
+      [options]="chartOptions" [plugins]="chartPlugins" [legend]="chartLegend">
+    </canvas>
+  </div>
 </div>

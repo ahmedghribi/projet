@@ -6,6 +6,8 @@ import { IndexComponent } from './index/index.component';
 import { ChartsModule } from '@rinminase/ng-charts';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
+import { NzStatisticModule } from 'ng-zorro-antd/statistic';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
     DashboardRoutingModule,
     ChartsModule,
     NzGridModule,
-    NzPageHeaderModule
+    NzPageHeaderModule,
+    NzStatisticModule,
+    NzIconModule
   ]
 })
 export class DashboardModule { }
