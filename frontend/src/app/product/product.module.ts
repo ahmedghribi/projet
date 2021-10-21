@@ -11,6 +11,11 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,12 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
     NzButtonModule,
     NzIconModule,
     NzPageHeaderModule,
-    NzModalModule
+    NzModalModule,
+    NzInputModule,
+    NzFormModule,
+    NzSelectModule,
+    NzAlertModule,
+    NzInputNumberModule
   ]
 })
 export class ProductModule { }

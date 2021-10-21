@@ -14,7 +14,7 @@ class Categories extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'name', 'image'
+        'name', 'description'
     ];
 
     public function Article()

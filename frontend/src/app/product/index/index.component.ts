@@ -34,6 +34,11 @@ export class IndexComponent implements OnInit {
         this.ProductService.delete(id).subscribe(res => {
           this.listOfData = this.listOfData.filter(item => item.id !== id);
           console.log("Product deleted ");
+          this.ProductService.getAll().subscribe((data: Product[]) => {
+            this.listOfData = data;
+            console.log(this.listOfData);
+            this.listOfDisplayData = [...this.listOfData];
+          });
         })
     });
   }

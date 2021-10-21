@@ -22,7 +22,7 @@ class CategoriesController extends Controller
             $request->all(),
             [
                 'name' => 'required',
-                'image' => 'required',
+                'description' => 'required',
             ]
         );
         if ($validator->fails()) {
