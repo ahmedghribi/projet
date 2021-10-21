@@ -1,1 +1,10 @@
-ok
+<nz-page-header class="site-page-header" nzTitle="Dashboard">
+
+</nz-page-header>
+
+<div nz-row>
+    <div nz-col nzSpan="12"><canvas baseChart chartType="pie" [data]="CategoryDatas" [colors]="chartColors"
+            [labels]="CategoryNames" [options]="chartOptions" [plugins]="chartPlugins" [legend]="chartLegend">
+        </canvas></div>
+    <div nz-col nzSpan="12">col-12</div>
+</div>
