@@ -17,8 +17,8 @@ export class IndexComponent implements OnInit {
   CategoryDatas: any[] = [];
   CategoryColors: any[] = [];
   chartColors: any[] = [];
-  totalCategory: any;
-  totalProduct: any;
+  totalCategory: any = 0;
+  totalProduct: any = 0;
 
   chartOptions = {
     responsive: true
